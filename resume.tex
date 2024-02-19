@@ -1,0 +1,260 @@
+\documentclass[a4paper]{article}
+    \usepackage{fullpage}
+    \usepackage{amsmath}
+    \usepackage{amssymb}
+    \usepackage{textcomp}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \textheight=10in
+    \pagestyle{empty}
+    \raggedright
+    \usepackage[left=0.6in,right=0.6in,bottom=0.6in,top=0.8in]{geometry}
+    \usepackage{comment}
+    \usepackage{hyperref}
+    \usepackage{fontawesome}
+
+
+   \hypersetup{
+      colorlinks=true,
+      linkcolor=blue,
+      filecolor=magenta,
+      urlcolor=black,
+    }
+    %\renewcommand{\encodingdefault}{cg}
+%\renewcommand{\rmdefault}{lgrcmr}
+
+\def\bull{\vrule height 0.8ex width .7ex depth -.1ex }
+
+% DEFINITIONS FOR RESUME %%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\area} [2] {
+    \vspace*{-9pt}
+    \begin{verse}
+        \textbf{#1}   #2
+    \end{verse}
+}
+
+\newcommand{\lineunder} {
+    \vspace*{-8pt} \\
+    \hspace*{-18pt} \hrulefill \\
+}
+
+\newcommand{\header} [1] {
+    {\hspace*{-18pt}\vspace*{6pt} \textsc{#1}}
+    \vspace*{-6pt} \lineunder
+}
+
+\newcommand{\employer} [3] {
+    { \textbf{#1} (#2)\\ \underline{\textbf{\emph{#3}}}\\  }
+}
+
+\newcommand{\contact} [3] {
+    \vspace*{-10pt}
+    \begin{center}
+        {\Huge \scshape {#1}}\\
+        #2 \\ #3
+    \end{center}
+    \vspace*{-8pt}
+}
+
+\newenvironment{achievements}{
+    \begin{list}
+        {$\bullet$}{\topsep 0pt \itemsep -2pt}}{\vspace*{4pt}
+    \end{list}
+}
+
+\newcommand{\schoolwithcourses} [4] {
+    \textbf{#1} #2 $\bullet$ #3\\
+    #4 \\
+    \vspace*{5pt}
+}
+
+\newcommand{\school} [4] {
+    \textbf{#1} #2 $\bullet$ #3\\
+    #4 \\
+}
+
+\newenvironment{entry}[4][]{
+  \textbf{#2} \hfill #1 \\
+  \textit{#3} \hfill #4 \\
+  \vspace{-2mm}
+  \begin{itemize} \itemsep 0em
+  }
+  {
+  \end{itemize}
+}
+% END RESUME DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{document}
+\vspace*{-40pt}
+
+    
+
+%==== Profile ====%
+\vspace*{-10pt}
+\begin{center}
+	{\Huge \scshape {Kyle Hu}}\\
+  \vspace{2mm}
+	\faGlobe\:San Diego, CA
+  $\cdot$ \faPhone\:(925)\,303-7083
+  $\cdot$ \faEnvelope\:kylehu2000@gmail.com
+  $\cdot$ \faLinkedinSquare\:\href{https://www.linkedin.com/in/kshu082/}{kshu082}
+  $\cdot$ \faGithubSquare\:\href{https://www.github.com/falafel72}{falafel72}
+  $\cdot$ \faChain\:\href{https://falafel72.github.io}{falafel72.github.io}\\
+\end{center}
+
+\begin{comment}
+\header{Objective}
+Looking for an entry-level full time job where I can fully utilize my
+robotics education and systems experience.
+\vspace{1mm}
+\end{comment}
+% ==== Education ====%
+\header{Education}
+\vspace{1mm}
+\textbf{University of California, San Diego}\hfill San Diego, CA\\
+MS Intelligent Systems, Robotics and Control \textit{GPA: 3.58} \hfill Sep 2022 - Jun 2024\\
+\vspace{2mm}
+\textbf{University of California, San Diego}\hfill San Diego, CA\\
+BS Computer Engineering \textit{GPA: 3.77} \hfill Sep 2018 - Jun 2022\\
+\vspace{2mm}
+
+% ==== Skills ====%
+\header{Skills}
+\vspace{2mm}
+\begin{tabular}{ l l }
+	Programming Languages: & C/C++, Python, Java, MATLAB, JavaScript, SystemVerilog, Haskell, Rust  \\
+	Software Tools:       & Git, Bash, Linux, STM32CubeIDE, Numpy, OpenCV, AWS, ROS, Docker, Github Actions \\
+  Hardware Tools: & Multimeter, Oscilloscope, 3D printing \\
+	Spoken Languages:      & English, Cantonese, Mandarin                     \\
+\end{tabular}
+\vspace{2mm}
+
+
+%==== Experience ====%
+\header{Engineering Experience}
+\vspace{1mm}
+
+
+\begin{entry}[San Diego, CA]{Engineers for Exploration}{Research
+    Assistant, Project Co-lead}{February 2022 - Present}
+	\item Designed a handheld underwater system for fish length measurement using
+    laser pointer as depth reference
+  \item Derived mathematical calibration procedure using Gauss-Newton optimization
+    for multiple sensor alignment
+  \item Planned and conducted experiments to investigate Snell's law
+    distortions, and verify system accuracy
+	\item Architected and developed software pipeline in \textbf{Python} to automate image
+    processing and sensor calibration
+\end{entry}
+\begin{entry}[San Diego, CA]{MaXentric Techologies}{Engineering Intern}{June
+    2022 - September 2022}
+	\item Implemented signal processing algorithms in \textbf{C} for a radar-based non-contact vitals monitor
+	\item Wrote embedded implementations of algorithms from research papers to track heart rate from radar signal
+	\item Revamped existing radar processing codebase to be modular and
+    extensible, while adding unit tests
+\end{entry}
+% what do we mean by accomplishments versus what you did?
+% goal: accurately communicate the difficult parts of what you did
+
+\begin{comment}
+  \begin{entry}[San Diego, CA]{Amazon}{Software Development Engineering
+      Intern}{June 2021 - September 2021}
+  \item Designed and implemented a favorites list widget on the grocery cart page using \textbf{AWS} and \textbf{Spring}
+	\item Performed cost/benefit analysis to identify appropriate \textbf{AWS} services (Lambda w/ Dynamo DB Table)
+	\item Implemented new endpoints on micro-services used in production code to host front-end
+\end{entry}
+\end{comment}
+\begin{entry}[San Diego, CA]{HP}{Software Engineering Intern}{June 2020 -
+    September 2020}
+\item Built an internal 3D measurement tool for biometrics using CGAL, VTK and Qt (\textbf{C++}).
+\item Implemented multi-threaded geodesic path searching, and employed
+  Levenberg-Marquardt for model alignment
+\item Digitized the measurement pipeline for custom 3D insoles, reducing time from several hours to several minutes
+\end{entry}
+
+% ==== Projects ====%
+\header{Projects}
+\vspace{1mm}
+
+\begin{comment}
+\begin{entry}{Visual SLAM}{Software}{March 2022} 
+\item Implemented simultaneous localization and mapping using stereo video and IMU data 
+\item Implemented an extended Kalman filter to more accurately predict the car position based on sensor readings
+\item Used IMU data for prediction step and stereo video for update step 
+
+\end{entry}
+\end{comment}
+
+\begin{entry}{Serial Driver}{Firmware}{February 2022 - June 2022}
+\item Part of sleep timer firmware to drive a low power radio telemetry system
+  for tracking collared lizards
+\item Implemented a serial driver for an \textbf{STM32} chip to facilitate
+  communication over \textbf{UART}
+\item Implemented ring buffer abstraction for robust processing of data from multiple serial ports concurrently
+\item Ring buffer memory updated using \textbf{DMA} triggered by \textbf{UART}
+  interrupt to store data as quickly as possible
+\end{entry}
+
+\begin{entry}{Infantry Firmware - Robomaster}{Firmware, Circuit Design}{January 2019 - August 2019}
+\item Implemented control firmware on \textbf{STM32} chip for a 2-DOF turret mounted on a 4-wheel robot
+\item Angle control of motors achieved using sensor data from encoders and IMU
+  over \textbf{UART} and \textbf{I2C} with \textbf{PID}
+\item Designed and soldered power circuit with supercaps in parallel with
+  battery to circumvent power restrictions
+\end{entry}
+\begin{comment}
+\begin{entry}{Pinball Machine}{Rapid Prototyping, Computer Aided Design, Circuit
+    Design}{April 2022 - June 2022}
+\item Designed and built pinball machine, including subsystems for flipper and bumper mechanism
+\item Modeled all components in \textbf{Solidworks}, manufactured primarily with \textbf{3D printing} and \textbf{laser cutting}
+\item Designed circuitry to control flippers on button press, and bumpers that
+  trigger (via piezoelectric) when hit
+\item Wrote software to run on an Arduino to control all actuators and keep
+  track of game state
+\end{entry}
+
+\begin{entry}{ACM Meme Gen}{Full Stack Web Development}{June 2019 - December 2019}
+\item Created a meme generator as a supplement for students to learn MongoDB, Express, React, and Node.js
+\item Implemented \textbf{React} components and state management, called the
+  Imgflip API for templates
+\item \textbf{MongoDB} back-end used to store user-created memes for a central gallery
+\end{entry}
+\end{comment}
+
+
+
+%==== Publications ====%
+
+%==== Communication ====%
+\header{Communication}
+\vspace{1mm}
+
+\begin{entry}{ECE 15 (Engineering Computation)}{Teaching Assistant}{September 2022 - Present}
+  \item Guided students through fundamentals of \textbf{C},
+    including variables, control flow, pointers, and process memory 
+  \item Held office hours, provided assistance with assignments, and graded exams for up to 250 students per class
+\end{entry}
+
+\begin{entry}{ACM UCSD}{Cofounder \& Technical Director}{May 2019 - June 2021}
+  \item Co-founded the largest engineering organization at UCSD, currently at over 800 members
+  \item Hosted technical workshops on a wide variety of topics, including full
+    stack web development (\textbf{React}, \textbf{Node.js}, \textbf{MongoDB}), \textbf{ROS}, and \textbf{Haskell}
+\end{entry}
+
+
+%\header{Awards}
+%2021-2022 ECE Student Service Award
+
+%==== Hobbies ====%
+\begin{comment}
+\header{Favorite Video Games}
+Street Fighter 6, Tears of the Kingdom, Hollow Knight, Celeste
+\end{comment}
+\ 
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
