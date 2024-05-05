@@ -8,10 +8,14 @@
     \textheight=9in
     \pagestyle{empty}
     \raggedright
-    \usepackage[left=0.4in,right=0.4in,bottom=0.4in,top=0.4in]{geometry}
+    \usepackage[left=0.4in,right=0.4in,bottom=0.3in,top=0.3in]{geometry}
     \usepackage{comment}
     \usepackage{hyperref}
     \usepackage{fontawesome}
+    \usepackage{etoolbox}
+    \usepackage{multibib}
+    \newcites{pat}{Patents}
+    \patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
 
 
    \hypersetup{
@@ -20,6 +24,10 @@
       filecolor=magenta,
       urlcolor=black,
     }
+
+    \makeatletter
+    \renewcommand\@biblabel[1]{}
+    \makeatother
     %\renewcommand{\encodingdefault}{cg}
 %\renewcommand{\rmdefault}{lgrcmr}
 
@@ -96,55 +104,76 @@
 	{\Huge \scshape {Kyle Hu}}\\
   \vspace{2mm}
 	\faGlobe\:San Diego, CA
-  $\cdot$ \faPhone\:(925)\,303-7083
   $\cdot$ \faEnvelope\:kylehu2000@gmail.com
   $\cdot$ \faLinkedinSquare\:\href{https://www.linkedin.com/in/kshu082/}{kshu082}
-  $\cdot$ \faGithubSquare\:\href{https://www.github.com/falafel72}{falafel72}
-  $\cdot$ \faChain\:\href{https://falafel72.github.io}{falafel72.github.io}\\
+  $\cdot$ \faGithubSquare\:\href{https://www.github.com/falafel72}{falafel72} \\
 \end{center}
 
 \begin{comment}
 \header{Objective}
 Looking for an entry-level full time job where I can fully utilize my
 robotics education and systems experience.
-\vspace{1mm}
+%\vspace{-1mm}
 \end{comment}
 % ==== Education ====%
 \header{Education}
 \vspace{1mm}
 \textbf{University of California, San Diego}\hfill San Diego, CA\\
-MS Intelligent Systems, Robotics and Control \textit{GPA: 3.58} \hfill Sep 2022 - Jun 2024\\
+MS Intelligent Systems, Robotics and Control \textit{GPA: 3.63} \hfill Sep 2022 - Jun 2024\\
+\vspace{1mm}
+\textit{Coursework} \\
+Statistical Learning | Sensing and Estimation in Robotics | Planning and Learning in Robotics | Advanced Linear Algebra | Dynamical Systems | Random Processes | Computer Vision | GPU Programming | Ocean Optics\\
 \vspace{2mm}
 \textbf{University of California, San Diego}\hfill San Diego, CA\\
 BS Computer Engineering \textit{GPA: 3.77} \hfill Sep 2018 - Jun 2022\\
+
+
 \vspace{2mm}
 
 % ==== Skills ====%
 \header{Skills}
 \vspace{2mm}
 \begin{tabular}{ l l }
-	Programming Languages: & C/C++, Python, Java, MATLAB, JavaScript, SystemVerilog, Haskell, Rust  \\
-%	Programming Languages: & C/C++, Python, Java, JavaScript, MATLAB, Haskell, Rust  \\
-	Software Tools:       & Git, Bash, Linux, STM32CubeIDE, Numpy, OpenCV, AWS, ROS, Docker, Github Actions \\
-	%Libraries/Tools:       & Git, Bash, Node.js, React, Express, Flask, Spring, MongoDB, AWS, Docker, Github Actions \\
-  Hardware Tools: & Multimeter, Oscilloscope, 3D printing \\
+	Programming Languages: & C/C++, Python, Java, MATLAB, JavaScript, Haskell, Rust  \\
+  Software Tools:       & Git, Bash, Linux, NumPy, Matplotlib, Jupyter Notebook, ROS, OpenCV, HTML, CSS, SCSS, \\
+   & CGAL, Qt, Docker, GitHub Actions, clap, serde, TOML, JSON, VSCode, Vim, Emacs \\
+  Embedded Skills: & STM32, I2C, UART, SPI, DMA\\
+  Hardware Tools: & Multimeter, Oscilloscope, Soldering, Solidworks, 3D Printing, Laser Cutting \\
 	Spoken Languages:      & English, Cantonese, Mandarin                     \\
 \end{tabular}
 \vspace{2mm}
 
-%==== Experience ====%
-\header{Engineering Experience}
+%==== Research ====%
+\header{Research}
 \vspace{1mm}
 \begin{entry}[San Diego, CA]{Engineers for Exploration}{Research
     Assistant, Project Co-lead}{February 2022 - Present}
-	\item Designing the first citizen science platform for gathering fish population data,
+	\item Designing the first citizen science platform for gathering fish population data
     using off-the-shelf components
-  \item Derived mathematical calibration procedure using Gauss-Newton optimization
+    \item Pivoted from a previously unsuccessful stereo-camera approach to a simpler single camera and laser system
+    \item Managing team in excess of 10 students to aid in engineering and research efforts
+  \item Derived mathematical calibration procedure using \textbf{Gauss-Newton} optimization
     for multiple sensor alignment
   \item Planned and conducted experiments to iterate on in-field calibration procedures and verify system accuracy
 	\item Architected and developed software pipeline in \textbf{Python} to automate image
     processing and sensor calibration
 \end{entry}
+
+%==== Publications ====%
+\header{Publications}
+\nocite{thesis,paper}
+\bibliographystyle{IEEEtran}
+\bibliography{publications}
+
+%==== Patents ====%
+\header{Patents}
+\nocitepat{fishsense-patent}
+\bibliographystylepat{IEEEtran}
+\bibliographypat{patents}
+
+%==== Experience ====%
+\header{Work Experience}
+\vspace{1mm}
 \begin{entry}[San Diego, CA]{MaXentric Techologies}{Engineering Intern}{June
     2022 - September 2022}
 	\item Implemented high-level digital signal processing algorithms in \textbf{C} for a radar-based non-contact vitals monitor
@@ -158,27 +187,60 @@ BS Computer Engineering \textit{GPA: 3.77} \hfill Sep 2018 - Jun 2022\\
       Intern}{June 2021 - September 2021}
   \item Designed and implemented a favorites list widget on the grocery cart page using \textbf{AWS} and \textbf{Spring}
 	\item Performed cost/benefit analysis to identify appropriate \textbf{AWS} services (Lambda w/ Dynamo DB Table)
-	\item Implemented new endpoints on micro-services used in production code to host front-end
+	\item Implemented new endpoints on microservices used in production code to host front-end
 \end{entry}
 
-\begin{comment}
 \begin{entry}[San Diego, CA]{HP}{Software Engineering Intern}{June 2020 -
     September 2020}
-\item Built an internal 3D measurement tool for biometrics using CGAL, VTK and Qt (\textbf{C++}).
+\item Built an internal 3D measurement tool for biometrics in \textbf{C++} using \textbf{CGAL}, \textbf{VTK} and \textbf{Qt}
 \item Implemented multi-threaded geodesic path searching, and employed
   Levenberg-Marquardt for model alignment
 \item Digitized the measurement pipeline for custom 3D insoles, reducing time from several hours to several minutes
 \end{entry}
-\end{comment}
+\pagebreak
+
+%==== Communication ====%
+\header{Leadership and Communication}
+\vspace{1mm}
+
+\begin{entry}{ECE 15 (Engineering Computation)}{Teaching Assistant}{September 2022 - March 2024}
+  \item Guided students through fundamentals of \textbf{C},
+    including variables, control flow, pointers, and process memory
+  \item Held office hours, provided assistance with assignments, and graded exams for up to 250 students per class
+\end{entry}
+
+\begin{entry}{CSE 100 (Advanced Data Structures)}{Tutor}{September 2020 - March 2021}
+  \item Taught data structures including red/black trees, multiway tries, and disjoint sets
+  \item Held office hours and provided assistance with assignments
+\end{entry}
+
+\begin{entry}{ACM UCSD}{Cofounder \& Technical Director}{May 2019 - June 2021}
+  \item Co-founded the largest engineering organization at UCSD, currently at over 800 members
+  \item Hosted technical workshops on a wide variety of topics, including full
+    stack web development (\textbf{React}, \textbf{Express}, \textbf{Node.js}, \textbf{MongoDB}), \textbf{ROS} (Melodic), and \textbf{Haskell}
+\end{entry}
 
 % ==== Projects ====%
 \header{Projects}
-\vspace{1mm}
+\begin{entry}{E4E Data Management Tool}{Software}{October 2023 - Present}
+\item Porting a data upload and validation tool written in \textbf{Python} to \textbf{Rust} for simpler distribution and better performance
+\item Writing command line interface using \textbf{clap}, writing configuration state to disk using \textbf{serde}
+\item Conducting code reviews with team of 3, tracking changes using Git feature branch workflow
+\end{entry}
 
+\vspace{1mm}
 \begin{entry}{Visual SLAM}{Software}{March 2022}
-\item Implemented simultaneous localization and mapping using stereo video and IMU data
-\item Implemented an extended Kalman filter to more accurately predict the car position based on sensor readings
-\item Written in \textbf{Python} and \textbf{Jupyter Notebook} using pure \textbf{numpy}
+\item Implemented simultaneous localization and mapping using stereo video and \textbf{IMU} data
+\item Implemented an \textbf{extended Kalman filter} to accurately predict the car position based on camera observation model.
+\item Written in \textbf{Python} and \textbf{Jupyter Notebook} using pure \textbf{numpy}, plotted results with \textbf{matplotlib}
+\end{entry}
+
+\begin{entry}{Pinball Machine}{Rapid Prototyping, Computer Aided Design, Circuit
+    Design}{April 2022 - June 2022}
+\item Modeled all components in \textbf{Solidworks}, manufactured primarily with \textbf{3D printing} and \textbf{laser cutting}
+\item Designed circuitry to control flippers on button press, and bumpers that
+  trigger (via piezoelectric) when hit
+\item Designed state machine to run on an \textbf{Arduino} to control all actuators and represent game state
 \end{entry}
 
 \begin{entry}{Serial Driver}{Firmware}{February 2022 - June 2022}
@@ -191,73 +253,65 @@ BS Computer Engineering \textit{GPA: 3.77} \hfill Sep 2018 - Jun 2022\\
   interrupt to store data as quickly as possible
 \end{entry}
 
-\begin{comment}
+\begin{entry}{Yonder Deep - Autonomous AUV}{Software}{October 2021 - June 2022}
+\item Developed software for an autonomous underwater vehicle, designed to study glacier melting using hydrophones
+\item Wrote subroutines for diving and heading correction in \textbf{Python}, using \textbf{IMU}, pressure sensor, and \textbf{PID} control loops
+\end{entry}
+
+\begin{entry}{Checkup}{Back End Development}{March 2021}
+\item Winner of Best Overall Hack at SF Hacks 2021
+\item Telemedicine website that takes basic diagnostic measurements using only the user’s camera and microphone
+\item Implemented heart rate measurement through webcam with a \textbf{Fourier Transform}, using \textbf{JavaScript}
+\end{entry}
+
+\begin{entry}{Campus Friends}{Back End Development}{August 2020 - March 2021}
+ \item Mobile app designed to help users find friends online
+\item Implemented signaling server in \textbf{Starlette} with private video chat room functionality through \textbf{WebRTC}
+\item Stored call data (start and end times, users involved) with \textbf{SQL} database (SQLAlchemy)
+\end{entry}
+
 \begin{entry}{Carbon Price Tag}{Full Stack Web Development}{February 2020}
-\item Chrome extension that displays extra carbon cost of items from Amazon
-  Whole Foods
-\item Implemented shipping route calculation with Google Maps API and used
+\item \textbf{Chrome extension} that displays extra carbon cost of items from Amazon Whole Foods
+\item Implemented shipping route calculation with \textbf{Google Maps API} and used
   \textbf{Flask} backend
 \item Winner of the Sustainability vertical at HackSC 2020
 \end{entry}
-\end{comment}
 
-\begin{comment}
+\begin{entry}{UCSD IEEE Project Drive}{Software, Firmware, Circuit Design}{September 2018 - March 2020}
+\item Developed and trained a convolutional neural network for an \textbf{Intel Realsense D455}-based autonomous vehicle
+\item Built electronics to manage power delivery from LIPO battery to ESC, \textbf{Arduino} controller and \textbf{Jetson TX2}
+\item Maintained \textbf{Ubuntu} \textbf{Docker} image to streamline collaborative development by standardizing development system
+\item Created \textbf{ROS} (Melodic) nodes to facilitate \textbf{LiDAR} and \textbf{Realsense} data ingest and processing
+\end{entry}
+
 \begin{entry}{ACM Meme Gen}{Full Stack Web Development}{June 2019 - December 2019}
-\item Created a meme generator as a supplement for students to learn MongoDB, Express, React, and Node.js
+\item Created a meme generator as a supplement for students to learn \textbf{MongoDB}, \textbf{Express}, \textbf{React}, and \textbf{Node.js}
 \item Implemented \textbf{React} components and state management, called the
   Imgflip API for templates
 \item \textbf{MongoDB} back-end used to store user-created memes for a central gallery
 \end{entry}
-\end{comment}
 
-
-\begin{comment}
 \begin{entry}{Infantry Firmware - Robomaster}{Firmware, Circuit Design}{January 2019 - August 2019}
 \item Implemented control firmware on \textbf{STM32} chip for a 2-DOF turret mounted on a 4-wheel robot
-\item Angle control of motors achieved using sensor data from encoders and IMU
+\item Angle control of motors achieved using sensor data from \textbf{encoders} and \textbf{IMU}
   over \textbf{UART} and \textbf{I2C} with \textbf{PID}
 \item Designed and soldered power circuit with supercaps in parallel with
   battery to circumvent power restrictions
 \end{entry}
-\end{comment}
-\begin{comment}
-\begin{entry}{Pinball Machine}{Rapid Prototyping, Computer Aided Design, Circuit
-    Design}{April 2022 - June 2022}
-\item Designed and built pinball machine, including subsystems for flipper and bumper mechanism
-\item Modeled all components in \textbf{Solidworks}, manufactured primarily with \textbf{3D printing} and \textbf{laser cutting}
-\item Designed circuitry to control flippers on button press, and bumpers that
-  trigger (via piezoelectric) when hit
-\item Wrote software to run on an Arduino to control all actuators and keep
-  track of game state
+
+\begin{entry}{Reef Pin}{Firmware, Circuit Design}{November 2018 - June 2019}
+\item Designed and tested system for a device used to measure depth for coral reef mapping
+\item Used a MS5803-14BA pressure sensor to measure depth and an MLX90393 magnetometer for cardinal direction
+\item Used \textbf{I2C} to retrieve sensor data and communicate with LED driver, logged data to an SD card using \textbf{SPI}
 \end{entry}
-
-
-\end{entry}
-\end{comment}
-
-
 
 %==== Publications ====%
 
-%==== Communication ====%
-\header{Communication}
-\vspace{1mm}
-
-\begin{entry}{ECE 15 (Engineering Computation)}{Teaching Assistant}{September 2022 - Present}
-  \item Guided students through fundamentals of \textbf{C},
-    including variables, control flow, pointers, and process memory 
-  \item Held office hours, provided assistance with assignments, and graded exams for up to 250 students per class
-\end{entry}
-
-\begin{entry}{ACM UCSD}{Cofounder \& Technical Director}{May 2019 - June 2021}
-  \item Co-founded the largest engineering organization at UCSD, currently at over 800 members
-  \item Hosted technical workshops on a wide variety of topics, including full
-    stack web development (\textbf{React}, \textbf{Node.js}, \textbf{MongoDB}), \textbf{ROS}, and \textbf{Haskell}
-\end{entry}
-
-
-%\header{Awards}
-%2021-2022 ECE Student Service Award
+\header{Awards}
+\begin{achievements}
+\item 2024 Jacobs Research Expo Transdisciplinary Collaboration Award
+\item 2021-2022 ECE Student Service Award
+\end{achievements}
 
 %==== Hobbies ====%
 \begin{comment}
